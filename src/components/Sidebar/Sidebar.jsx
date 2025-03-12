@@ -1,6 +1,22 @@
 import './Sidebar.css';
+import { useState } from 'react';
 
-function Sidebar({ expandedSections, toggleSection }) {
+function Sidebar() {
+  const [expandedSections, setExpandedSections] = useState({
+    'Asset Menu': true,  // Default open
+    'Report Facility': false,  // Default closed
+    'Saved Searches': false,  // Default closed
+    'Tagging': false,  // Default closed
+    'History': false   // Default closed
+  });
+
+  const toggleSection = (section) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
   const assetMenuItems = [
     'All Assets - received by C&R',
     'All Assets - received by Jamf',
@@ -21,12 +37,11 @@ function Sidebar({ expandedSections, toggleSection }) {
     'Eligible for Upgrade'
   ];
 
-  const savedSearchesItems = [
-    'Shared Search'
-  ];
+  const savedSearchesItems = ['Shared Search'];
 
   return (
     <div className="sidebar">
+      {/* Asset Menu */}
       <div className="sidebar-section">
         <div 
           className={`section-header ${expandedSections['Asset Menu'] ? 'expanded' : ''}`}
@@ -48,6 +63,7 @@ function Sidebar({ expandedSections, toggleSection }) {
         </div>
       </div>
 
+      {/* Report Facility */}
       <div className="sidebar-section">
         <div 
           className={`section-header ${expandedSections['Report Facility'] ? 'expanded' : ''}`}
@@ -65,6 +81,7 @@ function Sidebar({ expandedSections, toggleSection }) {
         )}
       </div>
 
+      {/* Saved Searches */}
       <div className="sidebar-section">
         <div 
           className={`section-header ${expandedSections['Saved Searches'] ? 'expanded' : ''}`}
@@ -82,6 +99,7 @@ function Sidebar({ expandedSections, toggleSection }) {
         )}
       </div>
 
+      {/* Tagging */}
       <div className="sidebar-section">
         <div 
           className={`section-header ${expandedSections['Tagging'] ? 'expanded' : ''}`}
@@ -97,6 +115,7 @@ function Sidebar({ expandedSections, toggleSection }) {
         )}
       </div>
 
+      {/* History */}
       <div className="sidebar-section">
         <div 
           className={`section-header ${expandedSections['History'] ? 'expanded' : ''}`}
