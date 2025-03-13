@@ -1,18 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-.app {
+.app-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 .main-content {
-  display: flex;
   flex: 1;
+  display: flex;
   overflow: hidden;
 }
